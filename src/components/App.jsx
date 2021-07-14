@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useState} from "react";
+import { createNotEmittedStatement } from "typescript";
 
 function App() {
+
+  const [newItem, setNewItem] = useState("");
+  const [items, setItems] = useState([]);
+  function handleNewItemChange(event) {
+    setNewItem(event.target.value);
+  }
+
+  function handleClick(){
+    setItems( prevItems => [ ...prevItems, newItem] );
+    setNewItem("");
+  }
+
   return (
     <div className="container">
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input type="text" />
-        <button>
+        <input type="text" value={newItem} onChange={handleNewItemChange}/>
+        <button onClick={handleClick}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          <li>A Item </li>
+          {items.map ( (todoItem, index) => {
+            return <li key={index}>{todoItem}</li>
+          })}
         </ul>
       </div>
     </div>
