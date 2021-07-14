@@ -15,6 +15,10 @@ function App() {
     setNewItem("");
   }
 
+  function deleteItem(index) {
+    setItems( prevItems => prevItems.filter((item, itemIndex) =>  itemIndex!=index));
+  }
+
   return (
     <div className="container">
       <div className="heading">
@@ -29,7 +33,7 @@ function App() {
       <div>
         <ul>
           {items.map ( (todoItem, index) => {
-            return <TodoItem item={todoItem} index={index}/>
+            return <TodoItem item={todoItem} index={index} onClick={deleteItem}/>
           })}
         </ul>
       </div>

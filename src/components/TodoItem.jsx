@@ -8,7 +8,7 @@ function TodoItem(props) {
         setDone( prev => !prev);
     }
 
-    return <li key={props.index} onClick={toggleItem} style={{ textDecoration: done && "line-through"}}>{props.item}</li>;
+    return <li key={props.index} id={props.index} onClick={ ()=> props.onClick(props.index)} style={{ textDecoration: done && "line-through"}}>{props.item}</li>;
 }
 
 export default TodoItem
