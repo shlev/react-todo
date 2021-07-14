@@ -1,5 +1,6 @@
 import React, { useState} from "react";
-import { createNotEmittedStatement } from "typescript";
+import TodoItem from './TodoItem';
+
 
 function App() {
 
@@ -28,7 +29,7 @@ function App() {
       <div>
         <ul>
           {items.map ( (todoItem, index) => {
-            return <li key={index}>{todoItem}</li>
+            return <TodoItem item={todoItem} index={index}/>
           })}
         </ul>
       </div>
